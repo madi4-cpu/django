@@ -23,7 +23,9 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run migrations
-        run: python django-ci/shop/manage.py migrate
+        run: python manage.py migrate
+        working-directory: django-ci/shop
 
       - name: Run tests
-        run: python django-ci/shop/manage.py test
+        run: python manage.py test
+        working-directory: django-ci/shop
