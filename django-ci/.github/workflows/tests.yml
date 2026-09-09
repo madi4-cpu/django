@@ -34,3 +34,6 @@ jobs:
     - name: Запуск тестов
       run: |
         python manage.py test
+
+
+
