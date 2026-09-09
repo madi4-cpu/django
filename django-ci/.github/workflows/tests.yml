@@ -27,10 +27,15 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install django
+          pip install unittest-xml-reporting
 
       - name: Проверка Django
         run: |
           python manage.py check
+
+      - name: Проверка миграций
+        run: |
+          python manage.py makemigrations --check
 
       - name: Выполнение миграций
         run: |
@@ -39,3 +44,12 @@ jobs:
       - name: Запуск тестов
         run: |
           python manage.py test -v 2
+          
+      - name: Установка зависимостей
+        run: |
+          python -m pip install --upgrade pip
+          pip install django pytest pytest-django
+
+      - name: Запуск тестов
+        run: |
+          pytest -v
